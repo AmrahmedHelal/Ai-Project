@@ -1,6 +1,6 @@
 window.localeData = window.localeData || {};
 window.localeData.ar = {
-  flag: 'ar',
+  flag: 'eg',
   appTitle: 'تيك تاك تو',
   appSubtitle: 'تحدٍ ناعم بطابع نيوني مع لعبة بوت سريعة ولعب محلي.',
   playSolo: 'اللعب فردي',
