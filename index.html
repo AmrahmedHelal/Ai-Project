@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="screen active" id="homeScreen">
+      <div class="top-bar">
+        <button class="icon-button" id="languageBtn" type="button" aria-label="Language">🇺🇸</button>
+      </div>
+
+      <div class="brand">
+        <div class="brand-icon"><span>XO</span></div>
+        <div>
+          <h1 class="title-large" id="appTitle">Tic-Tac-Toe</h1>
+          <p class="subtitle" id="appSubtitle">A soft neon-style challenge with quick bot gameplay and rule-friendly navigation.</p>
+        </div>
+      </div>
+
+      <div class="home-actions">
+        <button class="button" id="playSoloBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"/></svg>
+          <span class="button-label" id="playSoloText">Play Solo</span>
+        </button>
+        <button class="button" id="playFriendBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3Zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V20h6v-3.5c0-2.33-4.67-3.5-7-3.5Z"/></svg>
+          <span class="button-label" id="playFriendText">Play with a friend</span>
+        </button>
+        <button class="button light" id="howToPlayBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm.75 15.5h-1.5v-1.5h1.5v1.5Zm1.06-6.53l-.34.35c-.37.37-.56.86-.56 1.38v.75h-1.5v-.75c0-.66.26-1.29.74-1.77l.71-.71c.37-.36.57-.85.57-1.35 0-1.1-.9-2-2-2s-2 .9-2 2h-1.5c0-1.93 1.57-3.5 3.5-3.5S15 6.07 15 8c0 .94-.37 1.84-1.19 2.47Z"/></svg>
+          <span class="button-label" id="howToPlayText">How to Play</span>
+        </button>
+        <button class="button light" id="aboutBtn" type="button">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 17h-2v-2h2v2Zm1.07-7.75l-.9.92C12.45 13.9 12 14.5 12 16h-2v-.5c0-.8.45-1.5 1.17-1.92l1.24-.85c.37-.26.59-.66.59-1.08 0-.83-.67-1.5-1.5-1.5S9.5 9.17 9.5 10H7c0-1.93 1.57-3.5 3.5-3.5S14 8.07 14 10c0 .96-.39 1.83-1.01 2.5Z"/></svg>
+          <span class="button-label" id="aboutText">About</span>
+        </button>
+      </div>
+
+      <div class="difficulty-panel">
+        <div class="difficulty-label" id="difficultyLabel">Bot Difficulty</div>
+        <div class="difficulty-group" id="difficultyGroup">
+          <button class="difficulty-btn active" type="button" data-difficulty="easy" id="diffEasy">Easy</button>
+          <button class="difficulty-btn" type="button" data-difficulty="medium" id="diffMedium">Medium</button>
+          <button class="difficulty-btn" type="button" data-difficulty="hard" id="diffHard">Hard</button>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p id="homeInfoText">Tap "Play Solo" to challenge a friendly random bot, or invite a friend to take turns on the same screen. Explore game cues and tactics in the rules section.</p>
+      </div>
+    </div>
+
+    <div class="screen" id="rulesScreen">
+      <button class="back-button" id="backFromRules" type="button"><span id="backFromRulesText">← Back</span></button>
+      <div class="screen-title">
+        <h2 id="rulesTitle">Game Rules</h2>
+      </div>
+      <div class="rules-list">
+        <div class="rule-card">
+          <div class="rule-meta">
+            <strong>🏆 WIN</strong>
+            <p>Get 3 marks in a row horizontally, vertically, or diagonally to win the round.</p>
+          </div>
+          <div class="mini-grid">
+            <span class="mark-x">X</span><span></span><span></span>
+            <span></span><span class="mark-x">X</span><span></span>
+            <span></span><span></span><span class="mark-x">X</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-meta">
+            <strong>👎 DEFEAT</strong>
+            <p>A loss happens when your opponent connects 3 marks first. Block the lines to stay alive.</p>
+          </div>
+          <div class="mini-grid">
+            <span class="mark-o">O</span><span class="mark-o">O</span><span class="mark-o">O</span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-meta">
+            <strong>🤝 DRAW</strong>
+            <p>If all 9 squares fill without a winner, the game ends in a draw.</p>
+          </div>
+          <div class="mini-grid">
+            <span class="mark-x">X</span><span class="mark-o">O</span><span class="mark-x">X</span>
+            <span class="mark-o">O</span><span class="mark-x">X</span><span class="mark-o">O</span>
+            <span class="mark-o">O</span><span class="mark-x">X</span><span class="mark-o">O</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="gameScreen">
+      <div class="screen-top">
+        <button class="back-button" id="backFromGame" type="button"><span id="backFromGameText">← Back</span></button>
+      </div>
+      <div class="game-panel">
+        <div class="screen-title">
+          <div>
+            <p class="score-label" id="modeLabel">Mode</p>
+            <h2 id="gameModeTitle">Easy Mode</h2>
+          </div>
+          <p class="status-text" id="gameStatus">Your Turn</p>
+        </div>
+        <div class="score-bar">
+          <div class="score-item">
+            <span class="score-label">You</span>
+            <span class="score-value" id="playerScore">1</span>
+          </div>
+          <div class="score-item">
+            <span class="score-label">Bot</span>
+            <span class="score-value" id="botScore">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="board" id="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="button light" id="resetBtn" type="button"><span id="resetText">Reset Game</span></button>
+        <button class="button" id="rulesBtn" type="button"><span id="gameRulesText">Game Rules</span></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="lang-en.js"></script>
+  <script src="lang-ar.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
