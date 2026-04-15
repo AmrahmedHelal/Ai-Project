@@ -30,7 +30,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   background-color: var(--bg-color);
   background-image: radial-gradient(circle at top left, rgba(80, 144, 255, 0.22), transparent 24%),
                     radial-gradient(circle at bottom right, rgba(255, 122, 192, 0.2), transparent 22%),
@@ -46,9 +46,9 @@ body {
 .app-shell {
   width: min(1040px, 100%);
   max-width: 1040px;
-  min-height: 640px;
-  max-height: calc(100vh - 48px);
-  height: min(820px, calc(100vh - 48px));
+  min-height: min(640px, calc(100svh - 48px));
+  max-height: calc(100svh - 48px);
+  height: min(820px, calc(100svh - 48px));
   border-radius: 32px;
   padding: 24px;
   background: var(--surface-bg);
@@ -523,6 +523,50 @@ html[dir="rtl"] .screen-top {
   transform: scale(1.02);
 }
 
+
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .app-shell {
+    min-height: auto;
+    max-height: none;
+    height: auto;
+    padding: 18px;
+  }
+
+  .screen {
+    padding: 16px 0 10px;
+  }
+
+  .home-actions,
+  .action-row,
+  .score-bar,
+  .difficulty-group,
+  .rules-list {
+    gap: 12px;
+  }
+
+  .home-actions .button,
+  .action-row .button {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .board {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .rule-card {
+    grid-template-columns: 1fr;
+  }
+
+  .difficulty-group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 400px) {
   .app-shell {
